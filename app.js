@@ -73,7 +73,7 @@ function handleCollisions() {
       bird.x < obstaclesArray[i].x + obstaclesArray[i].width &&
       bird.x + bird.width > obstaclesArray[i].x &&
       ((bird.y < 0 + obstaclesArray[i].top && bird.y + bird.height > 0) ||
-        (bird.y > canvas.height - obstaclesArray[i].bottom &&
+        (bird.y > canvas.height - obstaclesArray[i].bottom - 50 && //
           bird.y + bird.height < canvas.height))
     ) {
       //collision detected

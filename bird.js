@@ -31,7 +31,7 @@ class Bird {
   }
   draw() {
     ctx.fillStyle = "red";
-    // ctx.fillRect(this.x, this.y, this.width, this.height);
+     ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.drawImage(
       flychickenImage,
       this.frameX * this.originalWidth,
