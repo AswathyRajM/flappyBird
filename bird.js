@@ -8,8 +8,8 @@ class Bird {
     this.vy = 0;
     this.originalWidth = 1102;
     this.originalHeight = 870;
-    this.width = this.originalWidth / 20;
-    this.height = this.originalHeight / 20;
+    this.width = this.originalWidth / 30;
+    this.height = this.originalHeight / 30;
     this.weight = 1;
     this.frameX = 0;
   }

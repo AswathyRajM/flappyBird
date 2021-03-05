@@ -40,7 +40,7 @@ function animate() {
   bird.update();
   bird.draw();
   ctx.fillStyle = "red";
-  ctx.font = "90px Georgia";
+  ctx.font = "50px Georgia";
   ctx.strokeText(score, 450, 70);
   ctx.fillText(score, 450, 70);
   handleCollisions();
@@ -87,7 +87,7 @@ function handleCollisions() {
         bird.x - 20,
         bird.y - 20,
         bird.width * 1.85,
-        bird.height * 1.85
+        bird.height * 1.95
       );
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
