@@ -9,6 +9,7 @@ let hue = 0;
 let frame = 0;
 let score = 0;
 let gamerspeed = 2;
+let frameHit = 0;
 
 const backgroundImage = new Image();
 backgroundImage.src = "images/bg.png";
@@ -65,7 +66,7 @@ window.addEventListener("keyup", (e) => {
 });
 
 const bang = new Image();
-bang.src = "images/bang.png";
+bang.src = "images/hitspritesheet.png";
 
 function handleCollisions() {
   for (i = 0; i < obstaclesArray.length; i++) {
@@ -73,11 +74,21 @@ function handleCollisions() {
       bird.x < obstaclesArray[i].x + obstaclesArray[i].width &&
       bird.x + bird.width > obstaclesArray[i].x &&
       ((bird.y < 0 + obstaclesArray[i].top && bird.y + bird.height > 0) ||
-        (bird.y > canvas.height - obstaclesArray[i].bottom - 50 && //
+        (bird.y > canvas.height - obstaclesArray[i].bottom - 40 && //
           bird.y + bird.height < canvas.height))
     ) {
       //collision detected
-      ctx.drawImage(bang, bird.x, bird.y, 50, 50);
+      ctx.drawImage(
+        bang,
+        0,
+        0,
+        2340 / 2,
+        982,
+        bird.x - 20,
+        bird.y - 20,
+        bird.width * 1.85,
+        bird.height * 1.85
+      );
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
       ctx.fillText(
