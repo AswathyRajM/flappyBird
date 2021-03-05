@@ -7,12 +7,53 @@
     height: 400;
     border: 2px solid black;
 } */
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
 
 #canvas1 {
     position: absolute;
     top: 0;
-    left: 13%;
+    left: 14%;
     width: auto;
     height: 99%;
+    border: 2px solid black;
+}
+
+.replay-button {
+    position: absolute;
+    right: 3rem;
+    top: 45%;
+    background-color: rgb(13, 86, 158);
+    font-size: 2rem;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 10px;
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: .2s ease background-color;
+}
+
+.replay-button:hover {
+    background-color: rgb(29, 112, 195);
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 1rem;
+    top: 40%;
+    background-color: rgb(13, 86, 158);
+    width: 10rem;
+    height: 8rem;
+    z-index: 10;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    border-radius: 10px;
     border: 2px solid black;
 }

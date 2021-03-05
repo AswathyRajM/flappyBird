@@ -43,8 +43,19 @@ function animate() {
   ctx.font = "50px Georgia";
   ctx.strokeText(score, 450, 70);
   ctx.fillText(score, 450, 70);
+
   handleCollisions();
-  if (handleCollisions()) return;
+  if (handleCollisions()) {
+    if (
+      localStorage.getItem("flappyHighScore") === null ||
+      localStorage.getItem("flappyHighScore") < score
+    ) {
+      localStorage.setItem("flappyHighScore", score);
+      document.getElementById("result").innerHTML = "Congrats! High Score!";
+    }
+    document.getElementById("result").innerHTML = score;
+    return;
+  }
   requestAnimationFrame(animate);
   angle += 0.12;
   hue++;
