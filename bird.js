@@ -11,6 +11,7 @@ class Bird {
     this.width = this.originalWidth / 20;
     this.height = this.originalHeight / 20;
     this.weight = 1;
+    this.frameX = 0;
   }
   update() {
     let curve = Math.sin(angle) * 5;
@@ -30,23 +31,26 @@ class Bird {
   }
   draw() {
     ctx.fillStyle = "red";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.drawImage(
       flychickenImage,
-      0,
+      this.frameX * this.originalWidth,
       0,
       this.originalWidth,
       this.originalHeight,
       this.x - 20,
       this.y - 12,
-      this.width * 1.51,
-      this.height * 1.51
+      this.width * 1.7,
+      this.height * 1.7
     );
   }
   flappy() {
     this.vy -= 2;
+
+    //to flap the wings
+    if (this.frameX >= 3) {
+      this.frameX = 0;
+    } else if (this.frameX % 3 === 0) this.frameX++;
   }
 }
 const bird = new Bird();
-
-// https://youtu.be/lGJ9i6CYKyQ?t=996
