@@ -10,10 +10,31 @@ let frame = 0;
 let score = 0;
 let gamerspeed = 2;
 
+const backgroundImage = new Image();
+backgroundImage.src = "images/bg.png";
+const bg = {
+  x1: 0,
+  x2: canvas.width,
+  y: 0,
+  width: canvas.width,
+  height: canvas.height,
+};
+
+function handleBackground() {
+  if (bg.x1 <= -bg.width + gamerspeed) {
+    bg.x1 = bg.width;
+  } else bg.x1 -= gamerspeed;
+  if (bg.x2 <= -bg.width + gamerspeed) {
+    bg.x2 = bg.width;
+  } else bg.x2 -= gamerspeed;
+  ctx.drawImage(backgroundImage, bg.x1, bg.y, bg.width, bg.height);
+  ctx.drawImage(backgroundImage, bg.x2, bg.y, bg.width, bg.height);
+}
+
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //   ctx.fillRect(10, canvas.height - 90, 50, 50);
-
+  handleBackground();
   handleParticles();
   handleObstacles();
   bird.update();
@@ -44,7 +65,7 @@ window.addEventListener("keyup", (e) => {
 });
 
 const bang = new Image();
-bang.src = "bang.png";
+bang.src = "images/bang.png";
 
 function handleCollisions() {
   for (i = 0; i < obstaclesArray.length; i++) {
@@ -58,7 +79,7 @@ function handleCollisions() {
       //collision detected
       ctx.drawImage(bang, bird.x, bird.y, 50, 50);
       ctx.font = "25px Georgia";
-      ctx.fillStyle = "black";
+      ctx.fillStyle = "white";
       ctx.fillText(
         "Game Over, Your Score is " + score,
         160,
