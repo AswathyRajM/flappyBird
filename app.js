@@ -3,6 +3,10 @@ const ctx = canvas.getContext("2d");
 canvas.width = 600;
 canvas.height = 400;
 
+document.querySelector(
+  ".container .score .score-heading"
+).innerHTML = localStorage.getItem("flappyHighScore");
+
 let spacePressed = false;
 let angle = 0;
 let hue = 0;
@@ -43,17 +47,8 @@ function animate() {
   ctx.font = "50px Georgia";
   ctx.strokeText(score, 450, 70);
   ctx.fillText(score, 450, 70);
-
   handleCollisions();
   if (handleCollisions()) {
-    if (
-      localStorage.getItem("flappyHighScore") === null ||
-      localStorage.getItem("flappyHighScore") < score
-    ) {
-      localStorage.setItem("flappyHighScore", score);
-      document.getElementById("result").innerHTML = "Congrats! High Score!";
-    }
-    document.getElementById("result").innerHTML = score;
     return;
   }
   requestAnimationFrame(animate);
@@ -102,11 +97,24 @@ function handleCollisions() {
       );
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
-      ctx.fillText(
-        "Game Over, Your Score is " + score,
-        160,
-        canvas.height / 2 - 10
-      );
+      //localStorage.setItem("flappyHighScore", 0);
+      if (
+        localStorage.getItem("flappyHighScore") === null ||
+        localStorage.getItem("flappyHighScore") < score
+      ) {
+        ctx.fillText("Congrats! Hight Score!", 200, canvas.height / 2 - 50);
+        localStorage.setItem("flappyHighScore", score);
+        document.querySelector(
+          ".container .score .score-heading"
+        ).innerHTML = score;
+        return true;
+      } else {
+        ctx.fillText(
+          "Game Over, Your Score is " + score,
+          160,
+          canvas.height / 2 - 10
+        );
+      }
       return true;
     }
   }
