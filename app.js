@@ -109,15 +109,16 @@ function handleCollisions() {
       if (highScore === null || score > highScore) {
         ctx.fillText(
           "Congrats! High Score! " + score,
-          canvas.width / 3,
-          canvas.height / 2 - 50
+          canvas.width / 3.2,
+          canvas.height / 2 - 10
         );
         localStorage.setItem("flappyHighScore", score);
         document.querySelector(
           ".container .score .score-heading"
         ).innerHTML = score;
         return true;
-      } else {
+      } else if (highScore > score) {
+        console.log(highScore <= score);
         ctx.fillText(
           "Game Over, Your Score is " + score,
           canvas.width / 3.2,
