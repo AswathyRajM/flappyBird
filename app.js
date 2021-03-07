@@ -116,6 +116,7 @@ function handleCollisions() {
         document.querySelector(
           ".container .score .score-heading"
         ).innerHTML = score;
+
         return true;
       } else if (highScore > score) {
         console.log(highScore <= score);
