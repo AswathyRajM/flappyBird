@@ -96,7 +96,7 @@ function handleCollisions() {
         bird.width * 1.85,
         bird.height * 1.95
       );
-      ctx.font = "25px Georgia";
+      ctx.font = "60px Georgia";
       ctx.fillStyle = "white";
 
       // Local storage of high score
@@ -104,7 +104,11 @@ function handleCollisions() {
         localStorage.getItem("flappyHighScore") === null ||
         localStorage.getItem("flappyHighScore") < score
       ) {
-        ctx.fillText("Congrats! Hight Score!", 190, canvas.height / 2 - 50);
+        ctx.fillText(
+          "Congrats! High Score! " + score,
+          canvas.width / 3,
+          canvas.height / 2 - 50
+        );
         localStorage.setItem("flappyHighScore", score);
         document.querySelector(
           ".container .score .score-heading"
@@ -113,7 +117,7 @@ function handleCollisions() {
       } else {
         ctx.fillText(
           "Game Over, Your Score is " + score,
-          160,
+          canvas.width / 3.2,
           canvas.height / 2 - 10
         );
       }
@@ -131,7 +135,7 @@ replayBtn.addEventListener("click", () => {
     y: 0,
     width: canvas.width,
     height: canvas.height,
-};
+  };
   spacePressed = false;
   obstaclesArray = [];
   score = 0;
