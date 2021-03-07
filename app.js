@@ -1,4 +1,6 @@
 const canvas = document.getElementById("canvas1");
+const replayBtn = document.getElementById("replay");
+
 var ctx = canvas.getContext("2d");
 canvas.width = 1800;
 canvas.height = 800;
@@ -35,7 +37,7 @@ function handleBackground() {
   ctx.drawImage(backgroundImage, bg.x1, bg.y, bg.width, bg.height);
   ctx.drawImage(backgroundImage, bg.x2, bg.y, bg.width, bg.height);
 }
-const replayBtn = document.getElementById("replay");
+
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
@@ -100,10 +102,11 @@ function handleCollisions() {
       ctx.fillStyle = "white";
 
       // Local storage of high score
-      if (
-        localStorage.getItem("flappyHighScore") === null ||
-        localStorage.getItem("flappyHighScore") < score
-      ) {
+      // localStorage.setItem("flappyHighScore", 1);
+
+      let highScore = localStorage.getItem("flappyHighScore");
+
+      if (highScore === null || score > highScore) {
         ctx.fillText(
           "Congrats! High Score! " + score,
           canvas.width / 3,
