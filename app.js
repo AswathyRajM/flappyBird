@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas1");
-const ctx = canvas.getContext("2d");
-canvas.width = 600;
-canvas.height = 400;
+var ctx = canvas.getContext("2d");
+canvas.width = 1800;
+canvas.height = 800;
 
 document.querySelector(
   ".container .score .score-heading"
@@ -12,12 +12,12 @@ let angle = 0;
 let hue = 0;
 let frame = 0;
 let score = 0;
-let gamerspeed = 2;
+let gamerspeed = 4;
 let frameHit = 0;
 
 const backgroundImage = new Image();
 backgroundImage.src = "images/bg.png";
-const bg = {
+let bg = {
   x1: 0,
   x2: canvas.width,
   y: 0,
@@ -35,7 +35,7 @@ function handleBackground() {
   ctx.drawImage(backgroundImage, bg.x1, bg.y, bg.width, bg.height);
   ctx.drawImage(backgroundImage, bg.x2, bg.y, bg.width, bg.height);
 }
-
+const replayBtn = document.getElementById("replay");
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handleBackground();
@@ -43,12 +43,13 @@ function animate() {
   handleObstacles();
   bird.update();
   bird.draw();
-  ctx.fillStyle = "red";
-  ctx.font = "50px Georgia";
-  ctx.strokeText(score, 450, 70);
-  ctx.fillText(score, 450, 70);
+  ctx.fillStyle = "white";
+  ctx.font = "100px Georgia";
+  ctx.strokeText(score, canvas.width - 150, 150);
+  ctx.fillText(score, canvas.width - 150, 150);
   handleCollisions();
   if (handleCollisions()) {
+    replayBtn.style.display = "initial";
     return;
   }
   requestAnimationFrame(animate);
@@ -97,12 +98,13 @@ function handleCollisions() {
       );
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
-      //localStorage.setItem("flappyHighScore", 0);
+
+      // Local storage of high score
       if (
         localStorage.getItem("flappyHighScore") === null ||
         localStorage.getItem("flappyHighScore") < score
       ) {
-        ctx.fillText("Congrats! Hight Score!", 200, canvas.height / 2 - 50);
+        ctx.fillText("Congrats! Hight Score!", 190, canvas.height / 2 - 50);
         localStorage.setItem("flappyHighScore", score);
         document.querySelector(
           ".container .score .score-heading"
@@ -119,3 +121,22 @@ function handleCollisions() {
     }
   }
 }
+
+replayBtn.addEventListener("click", () => {
+  score = 0;
+  gamerspeed = 4;
+  bg = {
+    x1: 0,
+    x2: canvas.width,
+    y: 0,
+    width: canvas.width,
+    height: canvas.height,
+};
+  spacePressed = false;
+  obstaclesArray = [];
+  score = 0;
+  delete bird;
+  const bird = new Bird();
+  replayBtn.style.display = "none";
+  animate();
+});

@@ -1,13 +1,54 @@
-/* #canvas1 {
+#canvas1 {
     position: absolute;
-    top: 50%;
+    top: 0%;
+    left: 0%;
+    /* transform: translate(-50%, -50%); */
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    z-index: -1;
+}
+
+.replay-button {
+    position: absolute;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400;
+    border-radius: 10%;
+    background-color: rgba(0, 4, 11, 0.544);
+    padding: 5px 12px;
+    font-size: 1.5rem;
+    z-index: 100;
+    display: none;
+    cursor: pointer;
+    transition: .3s ease background-color;
+    color: white;
+}
+
+.replay-button:hover {
+    background-color: rgba(236, 242, 250, 0.52);
+    color: black;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 1rem;
+    bottom: 2rem;
+    background-color: rgba(13, 86, 158, 0.501);
+    width: 10rem;
+    height: 8rem;
+    z-index: 10;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    border-radius: 10px;
     border: 2px solid black;
-} */
-.container {
+}
+
+
+/* .container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -56,4 +97,4 @@
     color: white;
     border-radius: 10px;
     border: 2px solid black;
-}
+} */
