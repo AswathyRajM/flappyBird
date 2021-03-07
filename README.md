@@ -8,7 +8,7 @@
 
 ## How to run
 
-Download/Clone the repository and run the flappybird.html in any web browser
+Download/Clone the repository and run the index.html in any web browser
 
 ## You can play the game by clicking the link below
 
