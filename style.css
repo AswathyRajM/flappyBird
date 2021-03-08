@@ -38,7 +38,7 @@
     height: 8rem;
     z-index: 10;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     color: white;
     border-radius: 10px;
     border: 2px solid black;
