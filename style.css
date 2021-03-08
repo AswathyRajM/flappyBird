@@ -25,9 +25,11 @@
     color: white;
 }
 
-.replay-button:hover {
+.replay-button:hover,
+.replay-button:focus {
     background-color: rgba(236, 242, 250, 0.52);
     color: black;
+    outline: none;
 }
 
 .score {

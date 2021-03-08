@@ -2,8 +2,8 @@ const canvas = document.getElementById("canvas1");
 const replayBtn = document.getElementById("replay");
 
 var ctx = canvas.getContext("2d");
-canvas.width = 1800;
-canvas.height = 800;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 document.querySelector(
   ".container .score .score-heading"
@@ -28,10 +28,10 @@ let bg = {
 };
 
 function handleBackground() {
-  if (bg.x1 <= -bg.width + gamerspeed) {
+  if (bg.x1 <= -bg.width + gamerspeed + 4) {
     bg.x1 = bg.width;
   } else bg.x1 -= gamerspeed;
-  if (bg.x2 <= -bg.width + gamerspeed) {
+  if (bg.x2 <= -bg.width + gamerspeed + 4) {
     bg.x2 = bg.width;
   } else bg.x2 -= gamerspeed;
   ctx.drawImage(backgroundImage, bg.x1, bg.y, bg.width, bg.height);
